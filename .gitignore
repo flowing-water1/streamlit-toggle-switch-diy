@@ -1,0 +1,5 @@
+streamlit_toggle_diy/frontend/node_modules/
+streamlit_toggle.egg-info/
+.DS_Store*
+dist/
+sample_app.py
