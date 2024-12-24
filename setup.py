@@ -13,7 +13,7 @@ setuptools.setup(
     description="Creates a customizable toggle, and you can change the label's background-color.",
     long_description=long_description,  # 设置长描述
     long_description_content_type="text/markdown",  # 指定内容类型为 Markdown
-    url="https://github.com/sqlinsights/streamlit-toggle-switch",
+    url="https://github.com/flowing-water1/streamlit-toggle-switch-diy",
     packages=setuptools.find_packages(),
     include_package_data=True,
     package_data={
