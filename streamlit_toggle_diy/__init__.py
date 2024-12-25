@@ -99,19 +99,19 @@ if not _RELEASE:
             border_radius=border_radius,
         )
         st_toggle_switch(
-            key='c2',
-            label_start="Question 2",
-            label_end="",  # 不显示后标签
-            justify=justify,
-            default_value=False,
-            inactive_color='#B0C4DE',
-            active_color="#1E90FF",
-            track_color="#87CEFA",
-            label_bg_color_start=color2_start,
-            label_bg_color_end=color2_end,
-            background_color_near_button_start=button_bg_start,
-            background_color_near_button_end=button_bg_end,
-            border_radius=border_radius,
+            key="input_toggle",
+            label_start="",
+            label_end=label_text,  # 不显示后标签
+            justify='flex-start',
+            default_value=True,
+            inactive_color='#95e1d3',
+            active_color="#f38181",
+            track_color="#f38181",
+            label_bg_color_start='white',
+            label_bg_color_end='white',
+            background_color_near_button_start='blue',
+            background_color_near_button_end='black',
+            border_radius='10px',
         )
     with columns[1]:
         st_toggle_switch(

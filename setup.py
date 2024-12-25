@@ -10,7 +10,7 @@ setuptools.setup(
     version="1.0.5",
     author="Flow Water",
     author_email="1665526933@qq.com",
-    description="Creates a customizable toggle, and you can change the label's background-color.",
+    description="A customized Streamlit toggle switch component with customizable labels, colors, and border radius",
     long_description=long_description,  # 设置长描述
     long_description_content_type="text/markdown",  # 指定内容类型为 Markdown
     url="https://github.com/flowing-water1/streamlit-toggle-switch-diy",

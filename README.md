@@ -57,3 +57,6 @@ tog.st_toggle_switch(
 | `background_color_near_button_start` | `str`    | The starting value of the background color near the switch, used to create a gradient effect.                                                                                   |
 | `background_color_near_button_end`   | `str`    | The ending value of the background color near the switch, used to create a gradient effect.                                                                                     |
 | `border_radius`                      | `str`    | The border radius value of the component, such as`'4px'`,`'8px'`,`'50%'`, etc.                                                                                                  |
+
+
+[streamlit.webm](assets/streamlit.webm?t=1735118172136)
