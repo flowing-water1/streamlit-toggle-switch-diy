@@ -61,4 +61,6 @@ tog.st_toggle_switch(
 
 ## Operation video
 
-https://github.com/flowing-water1/streamlit-toggle-switch-diy/blob/master/streamlit.mp4
+https://github.com/user-attachments/assets/55dfae74-b841-489b-bdd9-1d7fda7deb4d
+
+
