@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="streamlit_toggle_switch_diy",
-    version="1.0.3",
+    version="1.0.5",
     author="Flow Water",
     author_email="1665526933@qq.com",
     description="Creates a customizable toggle, and you can change the label's background-color.",

@@ -16,42 +16,34 @@ else:
 
 
 def st_toggle_switch(
-        label=None,
         key=None,
+        label_start="",  # 默认空字符串
+        label_end="",    # 默认空字符串
+        justify='flex-start',
         default_value=False,
-        label_after=False,
         inactive_color='#D3D3D3',
         active_color="#11567f",
         track_color="#29B5E8",
-        label_bg_color_start=None,  # 新增参数
-        label_bg_color_end=None,  # 新增参数
-        background_color_near_button_start=None,  # 新增参数
-        background_color_near_button_end=None  # 新增参数
+        label_bg_color_start=None,
+        label_bg_color_end=None,
+        background_color_near_button_start=None,
+        background_color_near_button_end=None,
+        border_radius=None,
 ):
-    if label_after:
-        label_end = label
-        label_start = ''
-        justify = 'flex-start'
-    else:
-        label_start = label
-        label_end = ''
-        justify = 'flex-start'
-        # justify = 'flex-end'
-
     toggle_value = _component_func(
         key=key,
         default_value=default_value,
-        label_after=label_after,
         label_start=label_start,
         label_end=label_end,
         justify=justify,
         inactive_color=inactive_color,
         active_color=active_color,
         track_color=track_color,
-        label_bg_color_start=label_bg_color_start,  # 传递新增参数
-        label_bg_color_end=label_bg_color_end,  # 传递新增参数
-        background_color_near_button_start=background_color_near_button_start,  # 传递新增参数
-        background_color_near_button_end=background_color_near_button_end  # 传递新增参数
+        label_bg_color_start=label_bg_color_start,
+        label_bg_color_end=label_bg_color_end,
+        background_color_near_button_start=background_color_near_button_start,
+        background_color_near_button_end=background_color_near_button_end,
+        border_radius=border_radius,
     )
     return toggle_value if toggle_value is not None else default_value
 
@@ -80,57 +72,108 @@ if not _RELEASE:
     button_bg_start = st.color_picker('选择按钮附近的起始背景颜色', '#FFFFFF')
     button_bg_end = st.color_picker('选择按钮附近的结束背景颜色', '#FFFFFF')
 
+    # 新增圆角选择器
+    border_radius = st.text_input('选择组件圆角（如：4px, 8px, 50%）', '8px')
+
+    # 新增对齐方式选择器
+    justify = st.selectbox(
+        '选择标签和开关的对齐方式',
+        ('flex-start', 'center', 'flex-end')
+    )
+
     columns = st.columns(3)
     with columns[0]:
         st_toggle_switch(
-            label="Question 1",
             key='c1',
-            label_after=False,
+            label_start="Question 1",
+            label_end="",  # 不显示后标签
+            justify=justify,
+            default_value=True,
+            inactive_color='#D3D3D3',
+            active_color="#11567f",
+            track_color="#29B5E8",
             label_bg_color_start=color1_start,
             label_bg_color_end=color1_end,
-            background_color_near_button_start=button_bg_start,  # 传递新增参数
-            background_color_near_button_end=button_bg_end  # 传递新增参数
+            background_color_near_button_start=button_bg_start,
+            background_color_near_button_end=button_bg_end,
+            border_radius=border_radius,
         )
         st_toggle_switch(
-            label="Question 2",
             key='c2',
-            label_after=False,
+            label_start="Question 2",
+            label_end="",  # 不显示后标签
+            justify=justify,
+            default_value=False,
+            inactive_color='#B0C4DE',
+            active_color="#1E90FF",
+            track_color="#87CEFA",
             label_bg_color_start=color2_start,
             label_bg_color_end=color2_end,
             background_color_near_button_start=button_bg_start,
-            background_color_near_button_end=button_bg_end
+            background_color_near_button_end=button_bg_end,
+            border_radius=border_radius,
         )
     with columns[1]:
         st_toggle_switch(
-            label="Question 3",
             key='q2',
-            label_after=True,
+            label_start="",  # 不显示前标签
+            label_end="Question 3",
+            justify=justify,
             default_value=True,
+            inactive_color='#DDA0DD',
+            active_color="#9400D3",
+            track_color="#BA55D3",
             label_bg_color_start=color3_start,
             label_bg_color_end=color3_end,
             background_color_near_button_start=button_bg_start,
-            background_color_near_button_end=button_bg_end
+            background_color_near_button_end=button_bg_end,
+            border_radius=border_radius,
         )
         st_toggle_switch(
-            label="Question 4",
             key='q3',
-            label_after=True,
-            default_value=True,
+            label_start="",  # 不显示前标签
+            label_end="Question 4",
+            justify=justify,
+            default_value=False,
+            inactive_color='#FFA07A',
+            active_color="#FF4500",
+            track_color="#FF6347",
             label_bg_color_start=color4_start,
             label_bg_color_end=color4_end,
             background_color_near_button_start=button_bg_start,
-            background_color_near_button_end=button_bg_end
+            background_color_near_button_end=button_bg_end,
+            border_radius=border_radius,
         )
     with columns[2]:
-        range_slider_toggle = st_toggle_switch(
-            "Disable Filter",
+        st_toggle_switch(
             key='q1',
-            label_after=False,
+            label_start="Disable Filter",
+            label_end="",  # 不显示后标签
+            justify=justify,
             default_value=True,
+            inactive_color='#98FB98',
+            active_color="#00FF7F",
+            track_color="#00FA9A",
             label_bg_color_start=color5_start,
             label_bg_color_end=color5_end,
             background_color_near_button_start=button_bg_start,
-            background_color_near_button_end=button_bg_end
+            background_color_near_button_end=button_bg_end,
+            border_radius=border_radius,
+        )
+        range_slider_toggle = st_toggle_switch(
+            key='ql',
+            label_start="Disable Filter",
+            label_end="",  # 不显示后标签
+            justify=justify,
+            default_value=True,
+            inactive_color='#98FB98',
+            active_color="#00FF7F",
+            track_color="#00FA9A",
+            label_bg_color_start=color5_start,
+            label_bg_color_end=color5_end,
+            background_color_near_button_start=button_bg_start,
+            background_color_near_button_end=button_bg_end,
+            border_radius=border_radius,
         )
         range_slider = st.slider(
             label="Filter Range",
