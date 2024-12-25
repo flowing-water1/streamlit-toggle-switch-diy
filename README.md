@@ -59,4 +59,6 @@ tog.st_toggle_switch(
 | `border_radius`                      | `str`    | The border radius value of the component, such as`'4px'`,`'8px'`,`'50%'`, etc.                                                                                                  |
 
 
+## Operation video
+
 [streamlit.webm](assets/streamlit.webm?t=1735118172136)
