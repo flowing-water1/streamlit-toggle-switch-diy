@@ -95,7 +95,7 @@ const StreamlitToggle = (props: ComponentProps) => {
   });
 
   const labelStartStyle = {
-    backgroundColor: label_bg_color_start || "#6e6abb",
+    backgroundColor: label_bg_color_start ,
     color: "#7f1916",
     padding: "4px 8px",
     borderRadius: border_radius,
@@ -104,7 +104,7 @@ const StreamlitToggle = (props: ComponentProps) => {
   };
 
   const labelEndStyle = {
-    backgroundColor: label_bg_color_end || "#0F1C2E",
+    backgroundColor: label_bg_color_end ,
     color: "#FFFFFF",
     padding: "4px 8px",
     borderRadius: border_radius,

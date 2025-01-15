@@ -101,14 +101,14 @@ if not _RELEASE:
         st_toggle_switch(
             key="input_toggle",
             label_start="",
-            label_end=label_text,  # 不显示后标签
+            label_end="Question 2",  # 不显示后标签
             justify='flex-start',
             default_value=True,
             inactive_color='#95e1d3',
             active_color="#f38181",
             track_color="#f38181",
             label_bg_color_start='white',
-            label_bg_color_end='white',
+            label_bg_color_end='black',
             background_color_near_button_start='blue',
             background_color_near_button_end='black',
             border_radius='10px',
