@@ -9,10 +9,11 @@ import { Typography, Switch, Grid } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 
 interface ToggleSwitchProps {
+  // 原有参数
   default_value: boolean;
   label_start?: string;
   label_end?: string;
-  justify?: 'flex-start' | 'center' | 'flex-end';
+  justify?: "flex-start" | "center" | "flex-end";
   active_color?: string;
   inactive_color?: string;
   track_color?: string;
@@ -21,70 +22,74 @@ interface ToggleSwitchProps {
   background_color_near_button_start?: string;
   background_color_near_button_end?: string;
   border_radius?: string;
+
+  // 新增的可选参数
+  label_start_color?: string; // 左侧标签文字颜色
+  label_end_color?: string;   // 右侧标签文字颜色
+  label_font_size?: string;   // 标签文字大小
+  label_font_weight?: string; // 标签文字粗细
+  switch_size?: "small" | "medium"; // Switch 尺寸
 }
 
 const StreamlitToggle = (props: ComponentProps) => {
+  // 1. 从 props.args 中解构所有参数
   const {
+    // -- 基础必选 --
     default_value,
-    label_end,
+    // -- 已有可选 --
     label_start,
-    justify = 'flex-start',
+    label_end,
+    justify = "flex-start",
     active_color = "#11567f",
-    inactive_color = '#D3D3D3',
+    inactive_color = "#D3D3D3",
     track_color = "#29B5E8",
     label_bg_color_start,
     label_bg_color_end,
     background_color_near_button_start,
     background_color_near_button_end,
     border_radius = "8px",
+    // -- 新增可选 --
+    label_start_color = "#7f1916",
+    label_end_color = "#FFFFFF",
+    label_font_size = "14px",
+    label_font_weight = "bold",
+    switch_size = "medium",
   } = props.args as ToggleSwitchProps;
 
+  // 2. 引入容器引用，以便 setFrameHeight() 时保证内容高度正确
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("Setting frame height");
+    // 通知 Streamlit 调整 iframe 高度
     Streamlit.setFrameHeight();
-
-    // 如果需要动态监听变化，可以启用以下代码
-    /*
-    const resizeObserver = new ResizeObserver(() => {
-      Streamlit.setFrameHeight();
-    });
-
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-    */
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Toggle clicked:", event.target.checked);
-    setState({ ...state, [event.target.name]: event.target.checked });
-    Streamlit.setComponentValue(event.target.checked);
-  };
-
+  // 3. 管理 Switch 状态
   const [state, setState] = React.useState({
     checkStatus: default_value,
   });
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+    // 将选中状态传回 Python
+    Streamlit.setComponentValue(event.target.checked);
+  };
+
+  // 4. Material-UI 主题：动态覆盖 Switch 的颜色
   const snowflakeTheme = createTheme({
     overrides: {
       MuiSwitch: {
         switchBase: {
-          color: inactive_color,
+          color: inactive_color, // 未选中时的按钮颜色
         },
         colorSecondary: {
           "&$checked": {
-            color: active_color,
+            color: active_color, // 选中时按钮颜色
           },
         },
         track: {
           opacity: 0.1,
-          backgroundColor: track_color,
+          backgroundColor: track_color, // 轨道颜色
           "$checked$checked + &": {
             opacity: 1,
             backgroundColor: track_color,
@@ -94,44 +99,52 @@ const StreamlitToggle = (props: ComponentProps) => {
     },
   });
 
-  const labelStartStyle = {
-    backgroundColor: label_bg_color_start ,
-    color: "#7f1916",
+  // 5. 样式：标签与背景
+  const labelStartStyle: React.CSSProperties = {
+    backgroundColor: label_bg_color_start,
+    color: label_start_color,
     padding: "4px 8px",
     borderRadius: border_radius,
     display: "inline-block",
-    fontWeight: "bold",
+    fontWeight: label_font_weight,
+    fontSize: label_font_size,
   };
 
-  const labelEndStyle = {
-    backgroundColor: label_bg_color_end ,
-    color: "#FFFFFF",
+  const labelEndStyle: React.CSSProperties = {
+    backgroundColor: label_bg_color_end,
+    color: label_end_color,
     padding: "4px 8px",
     borderRadius: border_radius,
     display: "inline-block",
-    fontWeight: "bold",
+    fontWeight: label_font_weight,
+    fontSize: label_font_size,
   };
 
-  const buttonBackgroundStyle = {
-    background: background_color_near_button_start && background_color_near_button_end
-      ? `linear-gradient(to right, ${background_color_near_button_start}, ${background_color_near_button_end})`
-      : background_color_near_button_start || background_color_near_button_end || "#ffffff",
+  // 背景（左右渐变或单色）
+  const buttonBackgroundStyle: React.CSSProperties = {
+    background:
+      background_color_near_button_start && background_color_near_button_end
+        ? `linear-gradient(to right, ${background_color_near_button_start}, ${background_color_near_button_end})`
+        : background_color_near_button_start ||
+          background_color_near_button_end ||
+          "#ffffff",
     padding: "10px",
     borderRadius: border_radius,
     display: "flex",
     alignItems: "center",
   };
 
+  // 6. 组件 JSX
   return (
     <ThemeProvider theme={snowflakeTheme}>
-      <Typography component="div" variant="subtitle1" paragraph={false} gutterBottom={false}>
+      <Typography
+        component="div"
+        variant="subtitle1"
+        paragraph={false}
+        gutterBottom={false}
+      >
         <div ref={containerRef} style={buttonBackgroundStyle}>
-          <Grid
-            container
-            justifyContent={justify}
-            alignItems="center"
-            spacing={1}
-          >
+          <Grid container justifyContent={justify} alignItems="center" spacing={1}>
             {label_start && (
               <Grid item>
                 <span style={labelStartStyle}>{label_start}</span>
@@ -142,6 +155,7 @@ const StreamlitToggle = (props: ComponentProps) => {
                 checked={state.checkStatus}
                 onChange={handleChange}
                 name="checkStatus"
+                size={switch_size} // 新增：Switch 尺寸
               />
             </Grid>
             {label_end && (

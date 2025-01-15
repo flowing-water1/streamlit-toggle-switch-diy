@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="streamlit_toggle_switch_diy",
-    version="1.0.6",
+    version="1.0.7",
     author="Flow Water",
     author_email="1665526933@qq.com",
     description="A customized Streamlit toggle switch component with customizable labels, colors, and border radius",
