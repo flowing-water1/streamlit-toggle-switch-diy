@@ -33,7 +33,7 @@ def st_toggle_switch(
     # ============== 新增可选参数 ==============
     label_start_color="#7f1916",  # 前标签文字颜色
     label_end_color="#FFFFFF",    # 后标签文字颜色
-    label_font_size="14px",       # 标签字体大小
+    label_font_size="20px",       # 标签字体大小
     label_font_weight="bold",     # 标签字体粗细
     switch_size="medium",         # Switch 尺寸，"small" 或 "medium"
 ):
