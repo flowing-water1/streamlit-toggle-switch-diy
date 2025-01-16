@@ -22,8 +22,6 @@ interface ToggleSwitchProps {
   background_color_near_button_start?: string;
   background_color_near_button_end?: string;
   border_radius?: string;
-
-  // 新增的可选参数
   label_start_color?: string; // 左侧标签文字颜色
   label_end_color?: string;   // 右侧标签文字颜色
   label_font_size?: string;   // 标签文字大小
@@ -40,20 +38,19 @@ const StreamlitToggle = (props: ComponentProps) => {
     label_start,
     label_end,
     justify = "flex-start",
-    active_color = "#11567f",
-    inactive_color = "#D3D3D3",
-    track_color = "#29B5E8",
-    label_bg_color_start,
-    label_bg_color_end,
-    background_color_near_button_start,
-    background_color_near_button_end,
-    border_radius = "8px",
-    // -- 新增可选 --
-    label_start_color = "#7f1916",
-    label_end_color = "#FFFFFF",
-    label_font_size = "14px",
-    label_font_weight = "bold",
-    switch_size = "medium",
+    inactive_color='#CEE8FF',
+    active_color="#00668c",
+    track_color="#3D5A80",
+    label_bg_color_start="#FFFFFF",
+    label_bg_color_end="yellow",
+    background_color_near_button_start="#FFFFFF",
+    background_color_near_button_end="#FFFFFF",
+    border_radius='30px',
+    label_start_color="#333333",
+    label_end_color="red",
+    label_font_size="16px",
+    label_font_weight="bold",
+    switch_size="medium",
   } = props.args as ToggleSwitchProps;
 
   // 2. 引入容器引用，以便 setFrameHeight() 时保证内容高度正确

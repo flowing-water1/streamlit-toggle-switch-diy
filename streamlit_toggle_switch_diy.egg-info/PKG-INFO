@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: streamlit_toggle_switch_diy
-Version: 1.0.7
+Version: 1.1.2
 Summary: A customized Streamlit toggle switch component with customizable labels, colors, and border radius
 Home-page: https://github.com/flowing-water1/streamlit-toggle-switch-diy
 Author: Flow Water

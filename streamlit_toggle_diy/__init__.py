@@ -21,21 +21,19 @@ def st_toggle_switch(
     label_end="",            # 后标签文字
     justify='flex-start',    # 对齐方式
     default_value=False,     # 默认开关状态
-    inactive_color='#D3D3D3',
-    active_color="#11567f",
-    track_color="#29B5E8",
-    label_bg_color_start=None,
-    label_bg_color_end=None,
-    background_color_near_button_start=None,
-    background_color_near_button_end=None,
-    border_radius=None,
-
-    # ============== 新增可选参数 ==============
-    label_start_color="#7f1916",  # 前标签文字颜色
-    label_end_color="#FFFFFF",    # 后标签文字颜色
-    label_font_size="20px",       # 标签字体大小
-    label_font_weight="bold",     # 标签字体粗细
-    switch_size="medium",         # Switch 尺寸，"small" 或 "medium"
+    inactive_color='#CEE8FF',
+    active_color="#00668c",
+    track_color="#3D5A80",
+    label_bg_color_start="#FFFFFF",
+    label_bg_color_end="yellow",
+    background_color_near_button_start="#FFFFFF",
+    background_color_near_button_end="#FFFFFF",
+    border_radius='30px',
+    label_start_color="#333333",
+    label_end_color="red",
+    label_font_size="16px",
+    label_font_weight="bold",
+    switch_size="medium",
 ):
     """
     在 Streamlit 中创建一个可自定义颜色、大小的切换开关组件。
@@ -100,8 +98,6 @@ def st_toggle_switch(
         background_color_near_button_start=background_color_near_button_start,
         background_color_near_button_end=background_color_near_button_end,
         border_radius=border_radius,
-
-        # === 将新增参数传给前端 ===
         label_start_color=label_start_color,
         label_end_color=label_end_color,
         label_font_size=label_font_size,
@@ -292,3 +288,8 @@ if not _RELEASE:
             max_value=100,
             disabled=range_slider_toggle,
         )
+
+st_toggle_switch(
+        key='q4',
+label_start="Disable Filter",
+label_end="Disable Filter",)

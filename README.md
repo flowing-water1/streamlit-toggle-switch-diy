@@ -1,8 +1,6 @@
-# streamlit_toggle_switch_diy
+# streamlit-toggle-diy
 
 Creates a toggle switch with color and placement customizations, and you can change the label's color, radius, font size, and more.
-
-
 
 ## Function
 
@@ -16,32 +14,31 @@ Creates a toggle switch with color and placement customizations, and you can cha
 ## Installation
 
 ```shell
-pip install streamlit-toggle-switch-diy
+pip install streamlit-toggle-diy
 ```
 
 ## Usage
 
 ```python
 import streamlit as st
-import streamlit_toggle_diy as tog
+import streamlit-toggle-diy as tog
 
 tog.st_toggle_switch(
-        key=None,
-        label_start="111",  
-        label_end="",   
-        justify='flex-start',
-        default_value=False,
-        inactive_color='#D3D3D3',
-        active_color="#11567f",
-        track_color="#29B5E8",
-        label_bg_color_start=None,
-        label_bg_color_end=None,
-        background_color_near_button_start=None,
-        background_color_near_button_end=None,
-        border_radius=None,
-                     )
+    key=None,
+    label_start="111",
+    label_end="",
+    justify='flex-start',
+    default_value=False,
+    inactive_color='#D3D3D3',
+    active_color="#11567f",
+    track_color="#29B5E8",
+    label_bg_color_start=None,
+    label_bg_color_end=None,
+    background_color_near_button_start=None,
+    background_color_near_button_end=None,
+    border_radius=None,
+)
 ```
-
 
 ## Parameters
 
@@ -73,7 +70,6 @@ tog.st_toggle_switch(
 > * If both `background_color_near_button_start` and `background_color_near_button_end` are provided, a gradient behind the switch is created.
 > * If you only provide one color, it will be used as a solid background.
 > * `label_start_color` and `label_end_color` control the text color of labels, while `label_bg_color_start` and `label_bg_color_end` control the background of those labels.
->
 
 ## Operation
 
